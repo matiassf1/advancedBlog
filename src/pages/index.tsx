@@ -35,7 +35,7 @@ const Index = () => {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const { onInputChange, username, password } = useForm(initialValue, formValidations);
+  const { onInputChange, username, password, isFormValid, usernameValid, passwordValid } = useForm(initialValue, formValidations);
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();

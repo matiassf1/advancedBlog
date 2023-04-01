@@ -48,7 +48,12 @@
 .login__input::placeholder {
   color: #999;
 }
-
+.login__input:focus::placeholder {
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out;
+  color: #666;
+  font-size: 0.7rem;
+  }
 .login__button {
   padding: 12px;
   border: none;
@@ -60,6 +65,7 @@
   transition: background-color 0.2s ease-in-out;
   width: 99%;
   animation: slideInRight 0.8s ease-in-out;
+
 }
 
 .login__button:hover {
