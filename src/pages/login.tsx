@@ -7,34 +7,16 @@ type typeInitialValue = {
   password: string;
 };
 
-type typeFormValidations = {
-  email: [(value: string) => boolean, string];
-  password: [(value: string) => boolean, string];
-};
-
 const initialValue: typeInitialValue = {
   email: "",
   password: "",
 };
 
-const formValidations: typeFormValidations = {
-  email: [
-    (value) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value),
-    "Email is required",
-  ],
-  password: [
-    (value: string) =>
-      /(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/.test(
-        value
-      ),
-    "Should have 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long",
-  ],
-};
 
 const Index = () => {
   //TODO: check if the user is logged
 
-  const { onInputChange, email, password, isFormValid, emailValid, passwordValid } = useForm(initialValue, formValidations);
+  const { onInputChange, email, password} = useForm(initialValue);
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -49,11 +31,13 @@ const Index = () => {
         <div className={styles.login__inputContainer}>
           <input
             type="text"
-            title="Username"
-            name="username"
+            title="Email"
+            name="email"
+            id="email"
             value={email}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             onChange={onInputChange}
-            placeholder="  Username"
+            placeholder="  Email"
             className={styles.login__input}
             required
           />
@@ -62,9 +46,11 @@ const Index = () => {
           <input
             type="password"
             title="Password"
+            id="password"
             placeholder="  Password"
-            className={styles.login__input}
+            className={`${styles.login__input} ${styles.valid} ${styles.invalid} `}
             name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
             value={password}
             onChange={onInputChange}
             required

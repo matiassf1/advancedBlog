@@ -72,6 +72,7 @@
   background-color: #00b3a3;
 }
 
+
 @media (min-width: 768px) {
   .login__form {
     width: 50%;
