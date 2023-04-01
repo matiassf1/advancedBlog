@@ -3,24 +3,24 @@ import styles from "@/styles/Auth.module.css";
 import { useForm } from "@/hooks/useForm";
 
 type typeInitialValue = {
-  username: string;
+  email: string;
   password: string;
 };
 
 type typeFormValidations = {
-  username: [(value: string) => boolean, string];
+  email: [(value: string) => boolean, string];
   password: [(value: string) => boolean, string];
 };
 
 const initialValue: typeInitialValue = {
-  username: "",
+  email: "",
   password: "",
 };
 
 const formValidations: typeFormValidations = {
-  username: [
-    (value: string) => /^[a-zA-Z0-9]*.{3,15}$/.test(value),
-    "Username is required",
+  email: [
+    (value) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value),
+    "Email is required",
   ],
   password: [
     (value: string) =>
@@ -32,10 +32,9 @@ const formValidations: typeFormValidations = {
 };
 
 const Index = () => {
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+  //TODO: check if the user is logged
 
-  const { onInputChange, username, password, isFormValid, usernameValid, passwordValid } = useForm(initialValue, formValidations);
+  const { onInputChange, email, password, isFormValid, emailValid, passwordValid } = useForm(initialValue, formValidations);
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -52,11 +51,10 @@ const Index = () => {
             type="text"
             title="Username"
             name="username"
-            value={username}
+            value={email}
             onChange={onInputChange}
             placeholder="  Username"
             className={styles.login__input}
-            ref={usernameRef}
             required
           />
         </div>
@@ -69,7 +67,6 @@ const Index = () => {
             name="password"
             value={password}
             onChange={onInputChange}
-            ref={passwordRef}
             required
           />
         </div>
