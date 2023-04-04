@@ -1,0 +1,85 @@
+
+.nav ul {
+    list-style-type: none;
+  }  
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #325B6D;
+    color: #fff;
+    padding: 1rem;
+    position: relative;
+  }
+  
+  .nav__item {
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .nav__link {
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+  }
+
+  /* Add styles for the underline animation */
+  .nav__link::before {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav__link:hover::before {
+    transform: scaleX(1);
+  }
+  
+  /* Add styles for the dropdown animation */
+  .nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: #325B6D;
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .nav__item:hover .nav__dropdown {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+    background-color: #528da9;
+    border-radius: 10%;
+    
+  }
+  
+  .nav__submenu{
+    width:90%;
+    margin: 0;
+    padding: 0%;
+  }
+
+  .nav__submenu li:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  .nav__submenu a {
+    text-align:start;
+  }

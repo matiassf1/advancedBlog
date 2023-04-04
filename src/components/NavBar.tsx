@@ -1,17 +1,48 @@
-import Link from 'next/link'
+import Link from "next/link";
+import styles from "@/styles/Nav.module.css";
 
-export default function Home() {
+export default function NavBar() {
   return (
-    <ul>
-      <li>
-        <Link href="/home">Home</Link>
-      </li>
-      <li>
-        <Link href="/blog">About Us</Link>
-      </li>
-      <li>
-        <Link href="/createblog">Blog Post</Link>
-      </li>
-    </ul>
-  )
+    <nav className={styles.nav}>
+      <ul className={styles.nav__menu}>
+        <li className={styles.nav__item}>
+          <Link href="/" className={styles.nav__link}>
+            Home
+          </Link>
+        </li>
+        <li className={styles.nav__item}>
+          <Link href="/createblog" className={styles.nav__link}>
+            Create Blog
+          </Link>
+        </li>
+        <li className={styles.nav__item}>
+          <Link href="/about" className={styles.nav__link}>
+            About Us
+          </Link>
+          <div className={styles.nav__dropdown}>
+            <ul className={styles.nav__submenu}>
+              <li>
+                <Link className={styles.nav__link} href="/about">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link className={styles.nav__link} href="/team">
+                  Our Team
+                </Link>
+              </li>
+              <li>
+                <Link className={styles.nav__link} href="/contact">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <h3 style={{marginRight:'40px'}} >Sfer's Blog</h3>
+
+    </nav>
+  );
 }

@@ -1,19 +1,35 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "@/styles/Auth.module.css";
 import { useForm } from "@/hooks/useForm";
+import { IUsers, typeInitialValue } from "@/types/loginTypes";
 
-type typeInitialValue = {
-  email: string;
-  password: string;
-};
+
+interface ILogin {}
 
 const initialValue: typeInitialValue = {
-  email: "",
-  password: "",
+  email: "admin@email.com",
+  password: "admin123",
 };
 
+const users: IUsers = {
+  admin: {
+    email: 'admin@email.com',
+    password: 'admin123',
+    subject: 'admin'
+  },
+  author: {
+    email: 'author@email.com',
+    password: 'author123',
+    subject: 'author'
+  },
+  reader: {
+    email: 'user@email.com',
+    password: 'user123',
+    subject: 'reader'
+  }
+}
 
-const Index = () => {
+const login: React.FunctionComponent<ILogin> = () => {
   //TODO: check if the user is logged
 
   const { onInputChange, email, password} = useForm(initialValue);
@@ -22,6 +38,11 @@ const Index = () => {
     event.preventDefault();
     console.log("Submitting form...");
     // TODO: Implement authentication logic here
+    for (const account of Object.entries(users)) {
+      console.log(account);
+      
+    }
+
   };
 
   return (
@@ -31,7 +52,7 @@ const Index = () => {
         <div className={styles.login__inputContainer}>
           <input
             type="text"
-            title="Email"
+            title="Insert an valid email"
             name="email"
             id="email"
             value={email}
@@ -45,15 +66,13 @@ const Index = () => {
         <div className={styles.login__inputContainer}>
           <input
             type="password"
-            title="Password"
+            title="Insert an valid password"
             id="password"
             placeholder="  Password"
             className={`${styles.login__input} ${styles.valid} ${styles.invalid} `}
             name="password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
             value={password}
             onChange={onInputChange}
-            required
           />
         </div>
         <button type="submit" className={styles.login__button}>
@@ -64,4 +83,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default login;

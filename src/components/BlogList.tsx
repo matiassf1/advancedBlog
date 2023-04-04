@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { ReactNode } from "react";
+import styles from "@/styles/Blog.module.css";
+import Blog from "./Blog";
 
-const BlogList = () => {
-  return (
-    <div>BlogList</div>
-  )
+export interface IBlogList {
+  blogs?: [];
 }
 
-export default BlogList
+const defaultBlogs = [1,2,3,4,5]
+
+const BlogList: React.FunctionComponent<IBlogList> = ({ blogs = defaultBlogs }) => {
+  return (
+    <div className={styles.container__blogs}>
+      <div className={styles.blogs}>
+        {blogs.map(() => (
+          <Blog />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BlogList;
