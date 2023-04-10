@@ -1,0 +1,126 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 50px;
+    position: relative; /* Add position relative for absolute positioning below */
+  }
+
+  .footer__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    place-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .footer__content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .footer__content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .footer__logo {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .footer__links {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+  }
+  
+  .footer__link {
+    margin-bottom: 10px;
+  }
+  
+  .footer__link a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footer__link a:hover {
+    color: #eaeaea;
+  }
+  
+  .footer__social {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer__social li {
+    margin: 0 10px;
+  }
+  
+  .footer__social a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  .footer__social a::before,
+  .footer__social a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .footer__social a::after {
+    left: auto;
+    right: 0;
+    transform-origin: left;
+  }
+  
+  .footer__social a:hover::before,
+  .footer__social a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  /* Add additional animation to footer links */
+  .footer__link a {
+    position: relative;
+  }
+  
+  .footer__link a::before,
+  .footer__link a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .footer__link a::after {
+    left: auto;
+    right: 0;
+    transform-origin: left;
+  }
+  
+  .footer__link a:hover::before,
+  .footer__link a:hover::after {
+    transform: scaleX(1);
+  }
+  

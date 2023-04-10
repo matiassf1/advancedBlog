@@ -41,7 +41,7 @@ export default function NavBar() {
         </li>
       </ul>
 
-      <h3 style={{marginRight:'40px'}} >Sfer's Blog</h3>
+      <h3 style={{marginRight:'40px'}}> Sfer Blog</h3>
 
     </nav>
   );

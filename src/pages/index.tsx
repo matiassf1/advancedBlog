@@ -5,7 +5,6 @@ import Layout from './layout';
 import BlogList from '@/components/BlogList';
 import styles from "@/styles/Blog.module.css";
 
-interface IHome {Layout: React.FunctionComponent;}
 
 const Home: NextPageWithLayout = () => {
   return (

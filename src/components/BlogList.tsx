@@ -12,8 +12,8 @@ const BlogList: React.FunctionComponent<IBlogList> = ({ blogs = defaultBlogs }) 
   return (
     <div className={styles.container__blogs}>
       <div className={styles.blogs}>
-        {blogs.map(() => (
-          <Blog />
+        {blogs.map((blog ,index) => (
+          <Blog key={index} />
         ))}
       </div>
     </div>
